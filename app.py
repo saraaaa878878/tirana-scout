@@ -15,6 +15,19 @@ def print_apartments(apartments):
         print(f"Apartment {i}: {apt['price']}€/month | {apt['sqm']} m² | {apt['bedrooms']} bedroom(s)")
 
 
+def filter_by_max_price(apartments, max_price):
+    """Return only the apartments priced at or below max_price."""
+    return [apt for apt in apartments if apt["price"] <= max_price]
+
+
 if __name__ == "__main__":
     apartments = get_apartments()
     print_apartments(apartments)
+
+    print("\n--- Apartments under 500€ ---")
+    cheap = filter_by_max_price(apartments, 500)
+    print_apartments(cheap)
+
+    print("\n--- Apartments under 700€ ---")
+    mid_range = filter_by_max_price(apartments, 700)
+    print_apartments(mid_range)
